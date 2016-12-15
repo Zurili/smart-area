@@ -301,6 +301,15 @@ angular.module('smartArea', [])
              * a cssClass specified.
              */
             function highlightText(){
+                var colours = {
+                    muted: '#777',
+                    primary: '#337ab7',
+                    success: '#3c763d',
+                    info: '#31708f',
+                    warning: '#8a6d3b',
+                    danger: '#a94442'
+                };
+
                 var text = $scope.areaData;
 
                 if(typeof($scope.areaConfig.autocomplete) === 'undefined' || $scope.areaConfig.autocomplete.length === 0){
@@ -310,10 +319,10 @@ angular.module('smartArea', [])
                 $scope.areaConfig.autocomplete.forEach(function(autoList){
                     for(var i=0; i<autoList.words.length; i++){
                         if(typeof(autoList.words[i]) === "string"){
-                            text = text.replace(new RegExp("([^\\w]|\\b)("+autoList.words[i]+")([^\\w]|\\b)", 'g'), '$1<span class="'+autoList.cssClass+'">$2</span>$3');
+                            text = text.replace(new RegExp("([^\\w]|\\b)("+autoList.words[i]+")([^\\w]|\\b)", 'g'), '$1<span class="'+autoList.cssClass+'" style="color:'+colours[autoList.style]+';">$2</span>$3');
                         }else{
                             text = text.replace(autoList.words[i], function(match){
-                                return '<span class="'+autoList.cssClass+'">'+match+'</span>';
+                                return '<span class="'+autoList.cssClass+'" style="'+autoList.style+'">'+match+'</span>';
                             });
                         }
                     }
