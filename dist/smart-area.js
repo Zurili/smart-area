@@ -130,7 +130,7 @@ angular.module('smartArea', [])
              * +                     Scope Data                     +
              * +----------------------------------------------------+ */
              
-            $scope.fakeArea = $scope.areaData;
+            $scope.fakeArea = $scope.areaData || '';
             $scope.dropdownContent = 'Dropdown';
             $scope.dropdown = {
                 content: [],
@@ -164,7 +164,7 @@ angular.module('smartArea', [])
              * on the textarea
              */
             $scope.trackCaret = function(){
-                var text = $scope.areaData,
+                var text = $scope.areaData || '',
                     position = getCharacterPosition();
 
                 $scope.fakeArea = $sce.trustAsHtml(text.substring(0, position) + '<span class="sa-tracking"></span>' + text.substring(position));
@@ -263,7 +263,7 @@ angular.module('smartArea', [])
 
                 $scope.dropdown.showFilter = false;
 
-                var text = $scope.areaData,
+                var text = $scope.areaData || '',
                     position = getCharacterPosition(),
                     lastWord = text.substr(0, position).split(/[\s\b{}]/),
                     remove = lastWord[lastWord.length - 1].length;
@@ -310,7 +310,7 @@ angular.module('smartArea', [])
                     danger: '#a94442'
                 };
 
-                var text = $scope.areaData;
+                var text = $scope.areaData || '';
 
                 if(typeof($scope.areaConfig.autocomplete) === 'undefined' || $scope.areaConfig.autocomplete.length === 0){
                     return;
@@ -355,7 +355,7 @@ angular.module('smartArea', [])
 
                 $scope.areaConfig.dropdown.forEach(function(element){
                     // Check if the trigger is under the cursor
-                    var text = $scope.areaData,
+                    var text = $scope.areaData || '',
                         position = getCharacterPosition();
                     if(typeof(element.trigger) === 'string' && element.trigger === text.substr(position - element.trigger.length, element.trigger.length)){
                         // The cursor is exactly at the end of the trigger
@@ -424,7 +424,7 @@ angular.module('smartArea', [])
                 // First check with the autocomplete words (the ones that are not objects
                 var autocomplete = [],
                     suggestions = [],
-                    text = $scope.areaData,
+                    text = $scope.areaData || '',
                     position = getCharacterPosition(),
                     lastWord = text.substr(0, position).split(/[\s\b{}]/);
 
