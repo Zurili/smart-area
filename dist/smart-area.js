@@ -123,7 +123,7 @@ angular.module('smartArea', [])
                 scope.fakeAreaElement.height(textArea.height());
             });
 
-            scope.$watch('areaData', () => {
+            scope.$watch('areaData', function() {
                 scope.fakeAreaElement.height(textArea.height());
             });
 
