@@ -102,7 +102,10 @@ angular.module('smartArea', [])
                 scope.fakeAreaElement.css(prop, textArea.css(prop));
             });
 
-            scope.fakeAreaElement.css('width',(parseInt(textArea.outerWidth()) + 1) + 'px');
+            // scope.fakeAreaElement.css('width',(parseInt(textArea.outerWidth()) + 1) + 'px');
+            scope.$watch(function(){ return textArea.outerWidth(); }, function(width) {
+                scope.fakeAreaElement.css('width',(parseInt(width) + 1) + 'px');
+            });
 
             // Special considerations for Firefox
 //            if (isFirefox) {
