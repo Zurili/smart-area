@@ -14,7 +14,8 @@ angular.module('smartArea', [])
         restrict: 'A',
         scope: {
             areaConfig: '=smartArea',
-            areaData: '=ngModel'
+            areaData: '=ngModel',
+            placeholder: '='
         },
         replace: true,
         link: function(scope, textArea){
@@ -334,6 +335,7 @@ angular.module('smartArea', [])
                         }
                     }
                 });
+                text = text !== '' ? text : '<span class="text-muted">' + $scope.placeholder + '</span>';
                 // Add to the fakeArea
                 $scope.fakeArea = $sce.trustAsHtml(text);
             }
