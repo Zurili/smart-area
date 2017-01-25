@@ -15,7 +15,7 @@ angular.module('smartArea', [])
         scope: {
             areaConfig: '=smartArea',
             areaData: '=ngModel',
-            placeholder: '='
+            placeholder: '@'
         },
         replace: true,
         link: function(scope, textArea){
