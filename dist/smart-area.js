@@ -160,7 +160,7 @@ angular.module('smartArea', [])
                 $scope.trackCaret();
 
                 // TODO Track caret on another fake area, so I don't have to recalculate autocomplete triggers every time the cursor moves.
-                checkTriggers();
+                // checkTriggers();
             });
 
             /* +----------------------------------------------------+
@@ -491,6 +491,19 @@ angular.module('smartArea', [])
             $element.bind('keyup click focus', function () {
                 $timeout(function(){
                     $scope.trackCaret();
+                }, 0);
+            });
+
+            $element.bind('keyup', function () {
+                $timeout(function(){
+                    checkTriggers();
+                }, 0);
+            });
+
+            $element.bind('click', function () {
+                $timeout(function(){
+                    $scope.dropdown.content = [];
+                    $element[0].focus();
                 }, 0);
             });
 
