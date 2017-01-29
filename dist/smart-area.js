@@ -494,10 +494,12 @@ angular.module('smartArea', [])
                 }, 0);
             });
 
-            $element.bind('keyup', function () {
-                $timeout(function(){
-                    checkTriggers();
-                }, 0);
+            $element.bind('keyup', function (event) {
+                if ([13, 38, 40, 27].indexOf(event.keyCode) === -1) {
+                    $timeout(function(){
+                        checkTriggers();
+                    }, 0);
+                }
             });
 
             $element.bind('click', function () {
