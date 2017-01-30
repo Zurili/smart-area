@@ -31,8 +31,6 @@ angular.module('smartArea', [])
                 'direction',  // RTL support
                 'boxSizing',
                 'width',  // on Chrome and IE, exclude the scrollbar, so the mirror div wraps exactly as the textarea does
-                'overflowX',
-                'overflowY',  // copy the scrollbar for IE
                 'color',
                 'height',
 
