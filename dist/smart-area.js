@@ -129,6 +129,15 @@ angular.module('smartArea', [])
                 scope.fakeAreaElement.height(textArea.height());
             });
 
+            textArea.on('keypress', function (event) {
+                var regex = new RegExp('[<>]');
+                var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                if (regex.test(key)) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+
             return mainWrap;
         },
         controller: ['$scope', '$element', '$timeout', '$sce', function($scope, $element, $timeout, $sce){
